@@ -39,6 +39,8 @@ public class StableArrayAdapter extends ArrayAdapter<Job> {
         firstLine.setText(values.get(position).getTitle());
         secondLine.setText(values.get(position).getCredits_to_earn() + "");
 
+        //Hier kan je beginnen spelen met een rij, de layout kan je aanpassen in list_layout.xml
+
         return rowView;
     }
 }
