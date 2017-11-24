@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "be.chickendinnerinc.hackaton.hackaton2017"
         minSdkVersion 21
@@ -29,4 +29,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    compile 'de.hdodenhof:circleimageview:2.2.0'        //      Github: https://github.com/hdodenhof/CircleImageView
+
 }

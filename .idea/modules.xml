@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Hackaton2017.iml" filepath="$PROJECT_DIR$/Hackaton2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hackaton2017-ChickenDinnerInc.iml" filepath="$PROJECT_DIR$/Hackaton2017-ChickenDinnerInc.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Michel\Desktop\Hackaton2017-ChickenDinnerInc\app\app.iml" filepath="C:\Users\Michel\Desktop\Hackaton2017-ChickenDinnerInc\app\app.iml" />
     </modules>
   </component>
 </project>
