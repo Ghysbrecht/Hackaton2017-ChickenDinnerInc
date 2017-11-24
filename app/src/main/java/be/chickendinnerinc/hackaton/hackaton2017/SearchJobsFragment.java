@@ -1,6 +1,8 @@
 package be.chickendinnerinc.hackaton.hackaton2017;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -47,15 +50,6 @@ public class SearchJobsFragment extends Fragment implements IJobListener {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchJobsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SearchJobsFragment newInstance(String param1, String param2) {
         SearchJobsFragment fragment = new SearchJobsFragment();
         Bundle args = new Bundle();
@@ -112,14 +106,18 @@ public class SearchJobsFragment extends Fragment implements IJobListener {
     public void populate(List<Job> jobs) {
         final StableArrayAdapter adapter = new StableArrayAdapter(getContext(), jobs);
         listView.setAdapter(adapter);
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
                 final Job item = (Job) parent.getItemAtPosition(position);
-                //De item is nu hetgene waar we op geklikt hebben.
+
+                Intent myIntent = new Intent(getContext(),
+                        JobActivity.class);
+                myIntent.putExtra("JobId", item.getId());
+                startActivity(myIntent);
             }
-        });*/
+        });
     }
 
 

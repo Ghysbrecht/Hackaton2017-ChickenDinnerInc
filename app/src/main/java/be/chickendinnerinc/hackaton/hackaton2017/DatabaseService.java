@@ -3,7 +3,9 @@ package be.chickendinnerinc.hackaton.hackaton2017;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -15,7 +17,16 @@ public interface DatabaseService {
     Call<List<Job>> allJobs();
 
     @GET("tasks/{id}.json")
-    Call<List<Job>> jobWithId(
+    Call<Job> jobWithId(
             @Path("id") int id
     );
+
+    @GET("users/{id}.json")
+    Call<User> userWithId(
+            @Path("id") int id
+    );
+
+    @POST("tasks/{id}/accept.json")
+    Call<BasicResponse> sendAcceptJob(@Path("id") int id, @Body AcceptJob accept);
+
 }

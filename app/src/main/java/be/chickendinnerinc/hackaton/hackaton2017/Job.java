@@ -42,6 +42,10 @@ public class Job {
         return title;
     }
 
+    public int getOwner(){
+        return owner;
+    }
+
     public String getDescription(){
         return description;
     }

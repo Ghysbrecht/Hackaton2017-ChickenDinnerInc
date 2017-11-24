@@ -1,5 +1,6 @@
 package be.chickendinnerinc.hackaton.hackaton2017;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private int currentUserId = 1;
+    private String serverAddress = "http://10.109.52.59:3000/";
 
     private MyJobsFragment myJobsFragment = new MyJobsFragment();
     private ProfileFragment profileFragment = new ProfileFragment();
@@ -47,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.contentFrame, profileFragment).commit();
+
+        SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("currentUserId", currentUserId);
+        editor.putString("serverAddress", serverAddress);
+        editor.commit();
     }
 
 }
