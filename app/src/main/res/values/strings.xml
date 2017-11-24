@@ -3,4 +3,7 @@
     <string name="title_profile">Profiel</string>
     <string name="title_tasks">Zoek Jobs</string>
     <string name="title_mytasks">Mijn Jobs</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
