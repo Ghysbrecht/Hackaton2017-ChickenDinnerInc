@@ -18,17 +18,19 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MyJobsFragment.OnFragmentInteractionListener} interface
+ * {@link OwnedJobsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MyJobsFragment#newInstance} factory method to
+ * Use the {@link OwnedJobsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MyJobsFragment extends Fragment implements IJobListener {
+public class OwnedJobsFragment extends Fragment implements IJobListener {
+
 
     private View mView;
     private Database database;
     private ListView listView;
     private int userId;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +43,7 @@ public class MyJobsFragment extends Fragment implements IJobListener {
 
     private OnFragmentInteractionListener mListener;
 
-    public MyJobsFragment() {
+    public OwnedJobsFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +53,11 @@ public class MyJobsFragment extends Fragment implements IJobListener {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MyJobsFragment.
+     * @return A new instance of fragment OwnedJobsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MyJobsFragment newInstance(String param1, String param2) {
-        MyJobsFragment fragment = new MyJobsFragment();
+    public static OwnedJobsFragment newInstance(String param1, String param2) {
+        OwnedJobsFragment fragment = new OwnedJobsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +77,7 @@ public class MyJobsFragment extends Fragment implements IJobListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView =  inflater.inflate(R.layout.fragment_my_jobs, container, false);
+        mView =  inflater.inflate(R.layout.fragment_owned_jobs, container, false);
         listView = (ListView)mView.findViewById(R.id.listView);
 
         SharedPreferences settings = this.getActivity().getSharedPreferences("MyPrefsFile", 0);
@@ -145,6 +147,6 @@ public class MyJobsFragment extends Fragment implements IJobListener {
     }
 
     public void refreshList(){
-        database.getJobsAcceptedBy(this, userId);
+        database.getCreatedJobsBy(this, userId);
     }
 }

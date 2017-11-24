@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -105,5 +106,101 @@ public class Database {
             }
         });
     }
+
+    public void getJobsAcceptedBy(IJobListener endpoint, int userid){
+        this.listener = endpoint;
+        Call<List<Job>> call = databaseService.acceptedJobByUser(userid);
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                if (response.body() != null) {
+                    listener.populate(response.body());
+                } else {
+                    Log.e("REST", "HTTP REST Request returned no data to parse");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.e("REST", "HTTP REST Request failed: " + t);
+            }
+        });
+    }
+
+    public void getCreatedJobsBy(IJobListener endpoint, int userid){
+        this.listener = endpoint;
+        Call<List<Job>> call = databaseService.ownedJobsBy(userid);
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                if (response.body() != null) {
+                    listener.populate(response.body());
+                } else {
+                    Log.e("REST", "HTTP REST Request returned no data to parse");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.e("REST", "HTTP REST Request failed: " + t);
+            }
+        });
+    }
+
+    public void completeJob(int jobId){
+        Call<BasicResponse> response = databaseService.completeJob(jobId, new CompleteJob(true));
+        response.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, retrofit2.Response<BasicResponse> response) {
+                if(response.body() != null){
+                    Log.e("THUMP","It did work, here is the info: " + response.body().getStatus() );
+
+                }
+                else Log.e("THUMP", "No body :(");
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
+                Log.e("THUMP", "Network error?");
+            }
+        });
+    }
+
+    public void deleteJob(int jobId){
+        Call<ResponseBody> response = databaseService.deleteJob(jobId);
+        response.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                if(response.body() != null){
+                    Log.e("THUMP","It did work, here is the info: " + response.body());
+
+                }
+                else Log.e("THUMP", "No body :(");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("THUMP", "Network error?");
+            }
+        });
+    }
+
+    public void createJob(Job job){
+        Call<BasicResponse> response = databaseService.createJob(job);
+        response.enqueue(new Callback<BasicResponse>() {
+            @Override
+            public void onResponse(Call<BasicResponse> call, retrofit2.Response<BasicResponse> response) {
+                if(response.body() != null){
+                    Log.e("THUMP","It did work, here is the info: " + response.body());
+
+                }
+                else Log.e("THUMP", "No body :(");
+            }
+
+            @Override
+            public void onFailure(Call<BasicResponse> call, Throwable t) {
+                Log.e("THUMP", "Network error?");
+            }
+        });
+    }
+
 
 }

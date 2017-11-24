@@ -3,6 +3,7 @@ package be.chickendinnerinc.hackaton.hackaton2017;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,9 +30,9 @@ import java.util.List;
 public class SearchJobsFragment extends Fragment implements IJobListener {
 
     private View mView;
-    private TextView tempList;
     private Database database;
     private ListView listView;
+    private String serverAddress;
 
 
 
@@ -73,7 +74,11 @@ public class SearchJobsFragment extends Fragment implements IJobListener {
                              Bundle savedInstanceState) {
         mView =  inflater.inflate(R.layout.fragment_search_jobs, container, false);
         listView = (ListView)mView.findViewById(R.id.listView);
-        database = new Database("http://10.109.52.59:3000/");
+
+        SharedPreferences settings = this.getActivity().getSharedPreferences("MyPrefsFile", 0);
+        String serverAddress  = settings.getString("serverAddress", "http://localhost:3000/");
+
+        database = new Database(serverAddress);
 
         refreshList();
         return mView;
