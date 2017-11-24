@@ -7,6 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
 
 
 /**
@@ -17,7 +23,15 @@ import android.view.ViewGroup;
  * Use the {@link SearchJobsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchJobsFragment extends Fragment {
+public class SearchJobsFragment extends Fragment implements IJobListener {
+
+    private View mView;
+    private TextView tempList;
+    private Database database;
+    private ListView listView;
+
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +77,12 @@ public class SearchJobsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_jobs, container, false);
+        mView =  inflater.inflate(R.layout.fragment_search_jobs, container, false);
+        listView = (ListView)mView.findViewById(R.id.listView);
+        database = new Database("http://10.109.52.59:3000/");
+
+        refreshList();
+        return mView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,18 +108,27 @@ public class SearchJobsFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    @Override
+    public void populate(List<Job> jobs) {
+        final StableArrayAdapter adapter = new StableArrayAdapter(getContext(), jobs);
+        listView.setAdapter(adapter);
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final Job item = (Job) parent.getItemAtPosition(position);
+                //De item is nu hetgene waar we op geklikt hebben.
+            }
+        });*/
+    }
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void refreshList(){
+       database.getAllAvailableJobs(this);
     }
 }
