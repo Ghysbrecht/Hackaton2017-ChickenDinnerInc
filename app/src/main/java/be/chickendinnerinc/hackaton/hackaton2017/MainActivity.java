@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int currentUserId = 1;
+    private int currentUserId = 3;
     private String serverAddress = "http://10.109.52.59:3000/";
 
     private MyJobsFragment myJobsFragment = new MyJobsFragment();
     private ProfileFragment profileFragment = new ProfileFragment();
     private SearchJobsFragment searchJobsFragment = new SearchJobsFragment();
+    private OwnedJobsFragment ownedJobsFragment = new OwnedJobsFragment();
 
     private android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.nav_jobs:
                     transaction.replace(R.id.contentFrame, myJobsFragment ).commit();
+                    return true;
+                case R.id.nav_owned_jobs:
+                    transaction.replace(R.id.contentFrame, ownedJobsFragment ).commit();
                     return true;
             }
             return false;

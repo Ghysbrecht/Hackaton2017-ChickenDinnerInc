@@ -9,7 +9,6 @@ import com.google.gson.annotations.Expose;
 
 public class Job {
 
-
     @Expose
     private int id;
     @Expose
@@ -33,6 +32,18 @@ public class Job {
     @Expose
     private String updated_at;
 
+    Job(){
+        this("Unset", "Unset", "Unset", 0, "Unset", 0);
+    }
+
+    Job(String title, String description, String location, int credits_to_earn, String tags, int owner){
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.credits_to_earn = credits_to_earn;
+        this.tags = tags;
+        this.owner = owner;
+    }
 
     public int getId(){
         return id;
