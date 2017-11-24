@@ -61,6 +61,7 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
         Log.e("JOB", "Accepting Job with JobId:" + jobId + " UserId:" + userId);
         database.acceptJob(jobId, userId);
         acceptButton.setText("Job Geacepteerd!");
+        acceptButton.setBackgroundColor(R.color.colorCare);
         acceptButton.setEnabled(false);
     }
 
