@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.chickendinnerinc.hackaton.hackaton2017.ShoppingActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:gravity="left"
+        android:padding="4dp"
+        android:text="Shop"
+        android:textColor="@color/colorText"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:srcCompat="@drawable/ic_filter_list_black_24dp" />
+
+    <TextView
+        android:id="@+id/item1"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorSecondary"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:text="10% Korting"
+        android:textColor="@color/colorHr"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item1"
+        app:layout_constraintEnd_toEndOf="@+id/item1"
+        app:layout_constraintTop_toTopOf="@+id/item1"
+        app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp" />
+
+    <TextView
+        android:id="@+id/item1Title"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/colorSecondary"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:text="Bakker Jan"
+        android:textColor="@color/colorHr"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item1" />
+
+    <ImageView
+        android:id="@+id/imageMoneyBackground"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_fiber_manual_record_black_24dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_care_coin"
+        app:layout_constraintBottom_toBottomOf="@+id/item1Title"
+        app:layout_constraintEnd_toEndOf="@+id/item1Title"
+        app:layout_constraintTop_toTopOf="@+id/item1Title" />
+
+    <TextView
+        android:id="@+id/item1Money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondary"
+        android:gravity="right"
+        android:padding="4dp"
+        android:text="500"
+        android:textColor="@color/colorHr"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/item1Title"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/item1Title" />
+
+    <TextView
+        android:id="@+id/hr"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/colorHr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item1" />
+
+    <TextView
+        android:id="@+id/item2Title"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/colorSecondary"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:text="Kapsalon Ilse"
+        android:textColor="@color/colorHr"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item2" />
+
+    <TextView
+        android:id="@+id/item2"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorSecondary"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:text="5% Korting + Koffie"
+        android:textColor="@color/colorHr"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item1Title" />
+
+    <ImageView
+        android:id="@+id/image2MoneyBackground"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_fiber_manual_record_black_24dp"
+        app:layout_constraintStart_toStartOf="@+id/image2View"
+        app:layout_constraintTop_toTopOf="@+id/image2View" />
+
+    <ImageView
+        android:id="@+id/image2View"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_care_coin"
+        app:layout_constraintBottom_toBottomOf="@+id/item2Title"
+        app:layout_constraintEnd_toEndOf="@+id/item2Title"
+        app:layout_constraintTop_toTopOf="@+id/item2Title" />
+
+    <TextView
+        android:id="@+id/item2Money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondary"
+        android:gravity="right"
+        android:padding="4dp"
+        android:text="750"
+        android:textColor="@color/colorHr"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/item2Title"
+        app:layout_constraintEnd_toStartOf="@+id/image2View"
+        app:layout_constraintTop_toBottomOf="@+id/hr2" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/hr2"
+        app:layout_constraintEnd_toEndOf="@+id/item2"
+        app:layout_constraintTop_toTopOf="@+id/item2"
+        app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp" />
+
+    <TextView
+        android:id="@+id/hr2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/colorHr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item2" />
+
+
+</android.support.constraint.ConstraintLayout>
