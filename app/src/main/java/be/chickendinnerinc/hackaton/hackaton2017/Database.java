@@ -20,6 +20,7 @@ public class Database {
     private DatabaseService databaseService;
     private IJobListener listener;
     private IUserListener Ulistener;
+    private IStreetListener Slistener;
 
     Database(String url){
         Retrofit retrofit = new Retrofit.Builder()
@@ -202,5 +203,22 @@ public class Database {
         });
     }
 
-
+    public void getStreets(IStreetListener endpoint){
+        this.Slistener = endpoint;
+        Call<List<String>> call = databaseService.getStreets();
+        call.enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if (response.body() != null) {
+                    Slistener.populate(response.body());
+                } else {
+                    Log.e("REST", "HTTP REST Request returned no data to parse");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                Log.e("REST", "HTTP REST Request failed: " + t);
+            }
+        });
+    }
 }

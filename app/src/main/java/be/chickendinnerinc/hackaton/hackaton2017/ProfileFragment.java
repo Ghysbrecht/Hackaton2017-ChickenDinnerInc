@@ -1,12 +1,16 @@
 package be.chickendinnerinc.hackaton.hackaton2017;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
 
 /**
@@ -17,7 +21,14 @@ import android.view.ViewGroup;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements IUserListener {
+
+    private View mView;
+    private Database database;
+    private ListView listView;
+    private int userId;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,7 +75,15 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        mView =  inflater.inflate(R.layout.fragment_profile, container, false);
+        listView = (ListView)mView.findViewById(R.id.listView);
+
+        SharedPreferences settings = this.getActivity().getSharedPreferences("MyPrefsFile", 0);
+        String serverAddress  = settings.getString("serverAddress", "http://localhost:3000/");
+        userId = settings.getInt("currentUserId", 0);
+        database = new Database(serverAddress);
+        database.getUserWithId(this, userId);
+        return mView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,6 +100,7 @@ public class ProfileFragment extends Fragment {
             mListener = (OnFragmentInteractionListener) context;
         } else {
         }
+        Log.e("ATTACH", "ProfileFragment Attached");
     }
 
     @Override
@@ -89,18 +109,16 @@ public class ProfileFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void populate(User user){
+        ((TextView)mView.findViewById(R.id.textName)).setText(user.getName());
+        ((TextView)mView.findViewById(R.id.textPhone)).setText(user.getCellphone());
+        ((TextView)mView.findViewById(R.id.textMoney)).setText(user.getCredits() + "");
     }
 }

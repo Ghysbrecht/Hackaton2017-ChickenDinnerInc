@@ -58,4 +58,8 @@ public interface DatabaseService {
     //Create a job
     @POST("tasks")
     Call<BasicResponse> createJob(@Body Job job);
+
+    //Get opendata streets
+    @GET("data/streets.json")
+    Call<List<String>> getStreets();
 }

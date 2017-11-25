@@ -6,19 +6,28 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreateJobActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
+
+public class CreateJobActivity extends AppCompatActivity implements View.OnClickListener, IStreetListener{
 
     private Database database;
     private int userId;
+    private List<String> streets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_job);
+
+        streets = new ArrayList<>();
 
         SharedPreferences settings = getSharedPreferences("MyPrefsFile", 0);
         String serverAddress  = settings.getString("serverAddress", "http://localhost:3000/");
@@ -28,6 +37,9 @@ public class CreateJobActivity extends AppCompatActivity implements View.OnClick
         submitButton.setOnClickListener(this);
 
         database = new Database(serverAddress);
+        database.getStreets(this);
+
+
 
     }
 
@@ -44,7 +56,7 @@ public class CreateJobActivity extends AppCompatActivity implements View.OnClick
         //Check all values and make object
         String title = ((EditText)findViewById(R.id.titleField)).getText().toString();
         String description = ((EditText)findViewById(R.id.commentField)).getText().toString();
-        String location = ((EditText)findViewById(R.id.locationField)).getText().toString();
+        String location = ((EditText)findViewById(R.id.streetField)).getText().toString();
         int credits = 0;
         try {
             credits = Integer.parseInt(((EditText)findViewById(R.id.creditField)).getText().toString());
@@ -83,5 +95,13 @@ public class CreateJobActivity extends AppCompatActivity implements View.OnClick
     void kill_activity()
     {
         finish();
+    }
+
+    @Override
+    public void populate(List<String> streets) {
+        this.streets = streets;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, (String[])streets.toArray(new String[0]));
+        AutoCompleteTextView textView = (AutoCompleteTextView)findViewById(R.id.streetField);
+        textView.setAdapter(adapter);
     }
 }

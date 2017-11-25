@@ -134,4 +134,10 @@ public class SearchJobsFragment extends Fragment implements IJobListener {
     public void refreshList(){
        database.getAllAvailableJobs(this);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshList();
+    }
 }

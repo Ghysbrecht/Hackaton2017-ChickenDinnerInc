@@ -105,6 +105,7 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
                 else if(myJob && !jobAccepted) deleteJob();
                 else if(jobAccepted) callOwner();
                 else acceptJob();
+                kill_activity();
                 break;
         }
     }
@@ -113,5 +114,10 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
         Log.e("JOB", "Calling owner...!");
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + ownerPhoneNumber));
         startActivity(intent);
+    }
+
+    void kill_activity()
+    {
+        finish();
     }
 }
