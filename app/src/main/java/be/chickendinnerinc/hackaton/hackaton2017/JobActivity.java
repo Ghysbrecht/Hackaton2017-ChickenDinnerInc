@@ -2,6 +2,7 @@ package be.chickendinnerinc.hackaton.hackaton2017;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
     private int jobId = 0;
     private int userId = 0;
     private Button acceptButton;
+    private TextView statusInfo;
     private boolean jobAccepted;
     private boolean jobCompleted;
     private boolean myJob;
@@ -46,6 +48,7 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
         database.getUserWithId(this, job.getOwner());
 
         acceptButton = (Button) findViewById(R.id.acceptButton);
+        statusInfo = (TextView) findViewById(R.id.statusInfo);
 
         if(job.getAcceptor() == 0) jobAccepted = false;
         else jobAccepted = true;
@@ -58,6 +61,11 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
         else if(jobAccepted) acceptButton.setText("Contacteer Eigenaar");
         else acceptButton.setText("Accepteer");
         acceptButton.setOnClickListener(this);
+
+        if(jobAccepted && jobCompleted) statusInfo.setText("Voltooit");
+        else if(jobAccepted && !jobCompleted) statusInfo.setText("Geaccepteerd");
+        else statusInfo.setText("Open");
+
 
         ((TextView)findViewById(R.id.titleText)).setText(job.getTitle());
         ((TextView)findViewById(R.id.descriptText)).setText(job.getDescription());

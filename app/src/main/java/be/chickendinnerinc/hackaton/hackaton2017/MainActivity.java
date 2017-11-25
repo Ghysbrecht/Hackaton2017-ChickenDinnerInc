@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int currentUserId = 1;
+
+    private int currentUserId = 2;
     private String serverAddress = "http://10.109.52.59:3000/";
 
     private MyJobsFragment myJobsFragment = new MyJobsFragment();

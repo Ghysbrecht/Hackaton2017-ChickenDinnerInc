@@ -15,12 +15,10 @@
             android:id="@+id/textViewColor"
             android:layout_width="0dp"
             android:layout_height="128dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@color/colorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/buttonCompleted"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
+            android:text="+3200000001"
             android:textColor="@color/colorText"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -100,31 +99,31 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_account_balance_wallet_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonCompleted"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewColor" />
 
         <ImageButton
             android:id="@+id/buttonCompleted"
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_beenhere_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_playlist_add_check_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/buttonTrans"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewColor" />
 
         <ImageButton
             android:id="@+id/buttonContacts"
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/ic_person_add_black_24dp"
+            android:src="@drawable/ic_shopping_cart_black_24dp"
             app:layout_constraintEnd_toStartOf="@+id/buttonSettings"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonTrans" />

@@ -146,7 +146,8 @@ public class ProfileFragment extends Fragment implements IUserListener, View.OnC
                 startActivity(myIntent);
                 break;
             case R.id.buttonContacts:
-
+                Intent myIntent2 = new Intent(getContext(), ShoppingActivity.class);
+                startActivity(myIntent2);
                 break;
             case R.id.buttonTrans:
                 Toast.makeText(getContext(), "Transactions - Coming Soon", Toast.LENGTH_SHORT).show();

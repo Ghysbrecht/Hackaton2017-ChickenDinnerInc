@@ -13,11 +13,11 @@
 
     <item
         android:id="@+id/nav_jobs"
-        android:icon="@drawable/ic_format_list_bulleted_black_24dp"
-        android:title="@string/title_mytasks" />
+        android:icon="@drawable/ic_playlist_play_black_24dp"
+        android:title="Te doen" />
     <item
         android:id="@+id/nav_owned_jobs"
-        android:icon="@drawable/ic_flag_black_24dp"
+        android:icon="@drawable/ic_playlist_add_black_24dp"
         android:title="@string/title_ownedtasks" />
 
 </menu>
