@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ import java.util.List;
  * Use the {@link OwnedJobsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OwnedJobsFragment extends Fragment implements IJobListener {
+public class OwnedJobsFragment extends Fragment implements IJobListener, View.OnClickListener {
 
 
     private View mView;
@@ -83,6 +84,9 @@ public class OwnedJobsFragment extends Fragment implements IJobListener {
         SharedPreferences settings = this.getActivity().getSharedPreferences("MyPrefsFile", 0);
         String serverAddress  = settings.getString("serverAddress", "http://localhost:3000/");
         userId = settings.getInt("currentUserId", 0);
+
+        FloatingActionButton plusButton = (FloatingActionButton)mView.findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(this);
 
         database = new Database(serverAddress);
 
@@ -148,5 +152,15 @@ public class OwnedJobsFragment extends Fragment implements IJobListener {
 
     public void refreshList(){
         database.getCreatedJobsBy(this, userId);
+    }
+
+    @Override
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.plusButton:
+                Intent myIntent = new Intent(getContext(), CreateJobActivity.class);
+                startActivity(myIntent);
+                break;
+        }
     }
 }
