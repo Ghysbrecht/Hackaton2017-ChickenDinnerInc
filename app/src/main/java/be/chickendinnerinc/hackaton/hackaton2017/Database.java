@@ -221,4 +221,23 @@ public class Database {
             }
         });
     }
+
+    public void getCompletedJobsBy(IJobListener endpoint, int userid){
+        this.listener = endpoint;
+        Call<List<Job>> call = databaseService.getJobsCompletedBy(userid);
+        call.enqueue(new Callback<List<Job>>() {
+            @Override
+            public void onResponse(Call<List<Job>> call, Response<List<Job>> response) {
+                if (response.body() != null) {
+                    listener.populate(response.body());
+                } else {
+                    Log.e("REST", "HTTP REST Request returned no data to parse");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Job>> call, Throwable t) {
+                Log.e("REST", "HTTP REST Request failed: " + t);
+            }
+        });
+    }
 }

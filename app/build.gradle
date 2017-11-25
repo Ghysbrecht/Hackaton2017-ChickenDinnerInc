@@ -31,8 +31,8 @@ dependencies {
     })
 
 
-    compile 'de.hdodenhof:circleimageview:2.2.0'        //      Github: https://github.com/hdodenhof/CircleImageView
-
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    //      Github: https://github.com/hdodenhof/CircleImageView
 
     // Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'

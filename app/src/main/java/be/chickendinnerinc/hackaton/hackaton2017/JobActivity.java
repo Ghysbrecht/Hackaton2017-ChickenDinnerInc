@@ -52,7 +52,7 @@ public class JobActivity extends AppCompatActivity implements IJobListener, IUse
 
         if(job.getOwner() == userId) myJob = true;
         else myJob = false;
-
+        if(job.getCompleted()) acceptButton.setVisibility(View.GONE);
         if(myJob && jobAccepted) acceptButton.setText("Voltooien");
         else if(myJob && !jobAccepted) acceptButton.setText("Verwijderen");
         else if(jobAccepted) acceptButton.setText("Contacteer Eigenaar");

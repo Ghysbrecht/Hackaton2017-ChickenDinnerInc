@@ -1,6 +1,7 @@
 package be.chickendinnerinc.hackaton.hackaton2017;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -21,7 +24,7 @@ import android.widget.TextView;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment implements IUserListener {
+public class ProfileFragment extends Fragment implements IUserListener, View.OnClickListener{
 
     private View mView;
     private Database database;
@@ -83,6 +86,19 @@ public class ProfileFragment extends Fragment implements IUserListener {
         userId = settings.getInt("currentUserId", 0);
         database = new Database(serverAddress);
         database.getUserWithId(this, userId);
+
+        ImageButton completedButton = mView.findViewById(R.id.buttonCompleted);
+        completedButton.setOnClickListener(this);
+
+        ImageButton transactionButton = mView.findViewById(R.id.buttonTrans);
+        transactionButton.setOnClickListener(this);
+
+        ImageButton cartButton = mView.findViewById(R.id.buttonContacts);
+        cartButton.setOnClickListener(this);
+
+        ImageButton settingsButton = mView.findViewById(R.id.buttonSettings);
+        settingsButton.setOnClickListener(this);
+
         return mView;
     }
 
@@ -120,5 +136,24 @@ public class ProfileFragment extends Fragment implements IUserListener {
         ((TextView)mView.findViewById(R.id.textName)).setText(user.getName());
         ((TextView)mView.findViewById(R.id.textPhone)).setText(user.getCellphone());
         ((TextView)mView.findViewById(R.id.textMoney)).setText(user.getCredits() + "");
+    }
+
+    @Override
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.buttonCompleted:
+                Intent myIntent = new Intent(getContext(), CompletedTasks.class);
+                startActivity(myIntent);
+                break;
+            case R.id.buttonContacts:
+
+                break;
+            case R.id.buttonTrans:
+                Toast.makeText(getContext(), "Transactions - Coming Soon", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.buttonSettings:
+                Toast.makeText(getContext(), "Settings - Coming Soon", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".JobActivity" />
-        <activity android:name=".CreateJobActivity"></activity>
+        <activity android:name=".CreateJobActivity" />
+        <activity android:name=".CompletedTasks"></activity>
     </application>
 
 </manifest>

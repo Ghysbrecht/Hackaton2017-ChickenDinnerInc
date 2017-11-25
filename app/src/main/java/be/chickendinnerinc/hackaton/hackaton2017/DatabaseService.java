@@ -62,4 +62,10 @@ public interface DatabaseService {
     //Get opendata streets
     @GET("data/streets.json")
     Call<List<String>> getStreets();
+
+    //Get jobs completed by a user
+    @GET("users/{id}/tasks/completed.json")
+    Call<List<Job>> getJobsCompletedBy(
+            @Path("id") int id
+    );
 }
