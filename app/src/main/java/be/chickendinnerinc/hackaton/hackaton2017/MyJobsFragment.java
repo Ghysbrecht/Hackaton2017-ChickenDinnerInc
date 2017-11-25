@@ -147,4 +147,10 @@ public class MyJobsFragment extends Fragment implements IJobListener {
     public void refreshList(){
         database.getJobsAcceptedBy(this, userId);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshList();
+    }
 }

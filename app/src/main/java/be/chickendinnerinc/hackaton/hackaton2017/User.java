@@ -25,6 +25,8 @@ public class User {
         private String created_at;
         @Expose
         private String updated_at;
+        @Expose
+        private int credits;
 
         public int getId(){
             return id;
@@ -54,6 +56,10 @@ public class User {
 
         public String getUpdated_at(){
             return updated_at;
+        }
+
+        public int getCredits(){
+                return credits;
         }
 
 }
